@@ -1,0 +1,285 @@
+{
+ "description": "Small-window (128 px), edge-scribble and cut-gap checks on the stock koine_machines trainer setup of check_koine_trainer; PREREG.md frozen 2026-11-23 20:40:34 (sha256 e1143b54d92e...). t1k1_128 / t1k2_128 = BrierNNPULoss / default loss at 128 px; t2k1_edge = BrierNNPULoss at 384 px with centre + edge lines; cutgap = 58 letter-size cuts, OPEN iff fill <= 0.30.",
+ "verdicts": {
+  "T1": "INCONCLUSIVE (between the bars)",
+  "T2": "PASS",
+  "T3": "PASS (STRONG)"
+ },
+ "reference_384": {
+  "k1": {
+   "b9_GATE": 0.7998,
+   "b9_M4": 0.7215,
+   "b9_M1": 0.6577,
+   "b9_M1n": 0.5983,
+   "b9_rAUC": 0.8124,
+   "b9_p50": 92.0,
+   "b9_p99": 207.0,
+   "s814_GATE": 0.8861,
+   "s814_M4": 0.9511,
+   "s814_M1": 0.6865,
+   "s814_M1n": 0.6781,
+   "thr": 88.0,
+   "FA80": 0.6248,
+   "cP20": 91.0,
+   "AUCcb": 0.7043,
+   "AUCpn": 0.7159,
+   "b140_GATE": 0.6017,
+   "b140_M4": 0.5738,
+   "b140_M1": 0.5327,
+   "b140_p99": 198.0,
+   "ckpt": "C:/Users/nikox/Documents/Vesuvius/data/scribblepu/koine_smoke/k1/ckpt_003000.pth"
+  },
+  "k2": {
+   "b9_GATE": 0.6098,
+   "b9_M4": 0.5835,
+   "b9_M1": 0.5864,
+   "b9_M1n": 0.5455,
+   "b9_rAUC": 0.6202,
+   "b9_p50": 66.0,
+   "b9_p99": 69.0,
+   "s814_GATE": 0.6006,
+   "s814_M4": 0.6394,
+   "s814_M1": 0.5388,
+   "s814_M1n": 0.647,
+   "thr": 65.0,
+   "FA80": 0.8554,
+   "cP20": 65.0,
+   "AUCcb": 0.5949,
+   "AUCpn": 0.5652,
+   "b140_GATE": 0.529,
+   "b140_M4": 0.5135,
+   "b140_M1": 0.5188,
+   "b140_p99": 72.0,
+   "ckpt": "C:/Users/nikox/Documents/Vesuvius/data/scribblepu/koine_smoke/k2/ckpt_003000.pth"
+  }
+ },
+ "small_window_and_edge": {
+  "t1k1_128": {
+   "b9_GATE": 0.6453,
+   "b9_M4": 0.6337,
+   "b9_M1": 0.665,
+   "b9_M1n": 0.666,
+   "b9_rAUC": 0.6718,
+   "b9_p50": 103.0,
+   "b9_p99": 131.0,
+   "s814_GATE": 0.7002,
+   "s814_M4": 0.7061,
+   "s814_M1": 0.8096,
+   "s814_M1n": 0.9514,
+   "thr": 97.0,
+   "FA80": 0.7237,
+   "cP20": 97.0,
+   "AUCcb": 0.588,
+   "AUCpn": 0.5836,
+   "b140_GATE": 0.5532,
+   "b140_M4": 0.5272,
+   "b140_M1": 0.5488,
+   "b140_p99": 131.0,
+   "ckpt": "C:/Users/nikox/Documents/Vesuvius/data/scribblepu/paul_checks/t1_k1_128/ckpt_003000.pth"
+  },
+  "t1k2_128": {
+   "b9_GATE": 0.5393,
+   "b9_M4": 0.5393,
+   "b9_M1": 0.5016,
+   "b9_M1n": 0.5065,
+   "b9_rAUC": 0.5425,
+   "b9_p50": 66.0,
+   "b9_p99": 69.0,
+   "s814_GATE": 0.5421,
+   "s814_M4": 0.5429,
+   "s814_M1": 0.6181,
+   "s814_M1n": 0.6627,
+   "thr": 66.0,
+   "FA80": 0.7873,
+   "cP20": 66.0,
+   "AUCcb": 0.5722,
+   "AUCpn": 0.5403,
+   "b140_GATE": 0.5118,
+   "b140_M4": 0.5101,
+   "b140_M1": 0.5023,
+   "b140_p99": 70.0,
+   "ckpt": "C:/Users/nikox/Documents/Vesuvius/data/scribblepu/paul_checks/t1_k2_128/ckpt_003000.pth"
+  },
+  "t2k1_edge": {
+   "b9_GATE": 0.8012,
+   "b9_M4": 0.7199,
+   "b9_M1": 0.5656,
+   "b9_M1n": 0.5425,
+   "b9_rAUC": 0.8024,
+   "b9_p50": 95.0,
+   "b9_p99": 159.0,
+   "s814_GATE": 0.9249,
+   "s814_M4": 0.9494,
+   "s814_M1": 0.6174,
+   "s814_M1n": 0.8295,
+   "thr": 90.0,
+   "FA80": 0.6122,
+   "cP20": 92.0,
+   "AUCcb": 0.677,
+   "AUCpn": 0.6818,
+   "b140_GATE": 0.6042,
+   "b140_M4": 0.5846,
+   "b140_M1": 0.5402,
+   "b140_p99": 158.0,
+   "ckpt": "C:/Users/nikox/Documents/Vesuvius/data/scribblepu/paul_checks/t2_k1_edge/ckpt_003000.pth"
+  }
+ },
+ "cutgap": {
+  "k1_384": {
+   "n_cuts": 58,
+   "n_valid": 40,
+   "open_rate": 0.5,
+   "median_fill": 0.33059145117900013,
+   "median_sham_fill": 0.18789696348107293,
+   "median_ink_fill": 0.7743458121921105,
+   "by_width": {
+    "46": {
+     "n": 10,
+     "open_rate": 0.2
+    },
+    "69": {
+     "n": 11,
+     "open_rate": 0.36363636363636365
+    },
+    "93": {
+     "n": 9,
+     "open_rate": 0.7777777777777778
+    },
+    "116": {
+     "n": 10,
+     "open_rate": 0.7
+    }
+   }
+  },
+  "pu_bhand": {
+   "n_cuts": 58,
+   "n_valid": 44,
+   "open_rate": 0.6136363636363636,
+   "median_fill": 0.21440924332704883,
+   "median_sham_fill": 0.019602846842702228,
+   "median_ink_fill": 0.6965677865662286,
+   "by_width": {
+    "46": {
+     "n": 12,
+     "open_rate": 0.4166666666666667
+    },
+    "69": {
+     "n": 12,
+     "open_rate": 0.5833333333333334
+    },
+    "93": {
+     "n": 11,
+     "open_rate": 0.8181818181818182
+    },
+    "116": {
+     "n": 9,
+     "open_rate": 0.6666666666666666
+    }
+   }
+  },
+  "pu_deconly": {
+   "n_cuts": 58,
+   "n_valid": 48,
+   "open_rate": 0.5833333333333334,
+   "median_fill": 0.1899062938565761,
+   "median_sham_fill": 0.02424439304394191,
+   "median_ink_fill": 0.862744051852812,
+   "by_width": {
+    "46": {
+     "n": 13,
+     "open_rate": 0.38461538461538464
+    },
+    "69": {
+     "n": 15,
+     "open_rate": 0.5333333333333333
+    },
+    "93": {
+     "n": 11,
+     "open_rate": 0.8181818181818182
+    },
+    "116": {
+     "n": 9,
+     "open_rate": 0.6666666666666666
+    }
+   }
+  },
+  "t1k1_128": {
+   "n_cuts": 58,
+   "n_valid": 7,
+   "open_rate": 0.7142857142857143,
+   "median_fill": -0.04537465833687946,
+   "median_sham_fill": -0.2746479504658556,
+   "median_ink_fill": 0.24620723727474148,
+   "by_width": {
+    "46": {
+     "n": 2,
+     "open_rate": 0.5
+    },
+    "69": {
+     "n": 1,
+     "open_rate": 0.0
+    },
+    "93": {
+     "n": 4,
+     "open_rate": 1.0
+    },
+    "116": {
+     "n": 0,
+     "open_rate": null
+    }
+   }
+  },
+  "v2": {
+   "n_cuts": 58,
+   "n_valid": 48,
+   "open_rate": 0.7916666666666666,
+   "median_fill": 0.05874912202032426,
+   "median_sham_fill": 0.020365786425514114,
+   "median_ink_fill": 0.7279171456202771,
+   "by_width": {
+    "46": {
+     "n": 11,
+     "open_rate": 0.7272727272727273
+    },
+    "69": {
+     "n": 15,
+     "open_rate": 0.6666666666666666
+    },
+    "93": {
+     "n": 12,
+     "open_rate": 0.8333333333333334
+    },
+    "116": {
+     "n": 10,
+     "open_rate": 1.0
+    }
+   }
+  },
+  "v3": {
+   "n_cuts": 58,
+   "n_valid": 51,
+   "open_rate": 0.5490196078431373,
+   "median_fill": 0.2456507191973713,
+   "median_sham_fill": 0.03350988183824568,
+   "median_ink_fill": 0.9493812013417123,
+   "by_width": {
+    "46": {
+     "n": 13,
+     "open_rate": 0.3076923076923077
+    },
+    "69": {
+     "n": 16,
+     "open_rate": 0.5
+    },
+    "93": {
+     "n": 11,
+     "open_rate": 0.7272727272727273
+    },
+    "116": {
+     "n": 11,
+     "open_rate": 0.7272727272727273
+    }
+   }
+  }
+ }
+}

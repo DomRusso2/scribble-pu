@@ -197,9 +197,23 @@ Reader-PU applies ScribblePU directly to Reader V3, using only thin centre lines
 
 ---
 
-## 5. Notes on the tests
+## 5. Checks against invented strokes: window size, edge scribbles, cut gaps
 
-- **Labels:** the lines in the tests were drawn by a script along the centre of existing ink labels, so every comparison with full masks is exact. Exam 2's lines are about 1.4 px wide; Exam 1 and Reader-PU use a 3-px spine.
+After the release, the team suggested three checks that any large-window ink model should pass. All three reuse the stock-trainer setup from section 1 (3,000 steps from scratch, thin lines through a fixed half of the letters), with pass/fail bars written down before the runs (`experiments/check_window_edge_cutgap/PREREG.md`).
+
+| Check | What changes | Result |
+|---|---|---|
+| **Small window** | 128 px tiles (Reader v2's window, smaller than one letter) instead of 384 px | ScribblePU still beats default training by `+0.1060` GATE on `0009B` (`0.6453` vs `0.5393`) and `+0.1581` on `PHerc. 0814` (`0.7002` vs `0.5421`), and default training still collapses to flat grey (`p99 = 69`). Its ink is dimmer than at 384 px (`p99 = 131` vs `207`; it sees 9x less papyrus per step in this short run), so by its pre-set brightness bar this check is inconclusive. |
+| **Edge scribbles** | In half of the labelled blocks the line runs along the stroke edges instead of the centre | Detection holds or improves: GATE `0.8012` vs `0.7998` on `0009B`, `0.9249` vs `0.8861` on `0814`. Letters come out less separated (M1 `0.5656` vs `0.6577`), so centre lines are the better default for reading. |
+| **Cut gaps** | Letter-size gaps (46 to 116 px, about 0.4 to 1.0 mm) cut into real strokes on held-out `PHerc. 0841` and `0009B` regions, filled with blank papyrus from the same sheet | Reader-PU keeps **58 to 61%** of the gaps open (both checkpoints), more than Reader V3's **55%**: retuning with ScribblePU adds no stroke completion and even keeps gaps slightly more open. Reader v2 (128 px window) keeps 79%, so the test does pick up a large window's extra bridging. |
+
+A gap counts as open when the model's read at its centre falls to 30% or less of the original stroke's, measured above blank papyrus (58 cuts on 4 regions). Two controls check the test itself: blank pasted onto blank papyrus changes nothing (median fill 0.02 to 0.03), and ink pasted into the cuts is read as ink (median 0.70 to 0.95). The scripts read our local copies of the volumes; point `cutgap.py` at your own surface volumes and labels to run the same test on any checkpoint.
+
+---
+
+## 6. Notes on the tests
+
+- **Labels:** the lines in the tests were drawn by a script along the centre of existing ink labels (section 5 also tests lines along the stroke edges), so every comparison with full masks is exact. Exam 2's lines are about 1.4 px wide; Exam 1 and Reader-PU use a 3-px spine.
 - **Fixed or moving half:** Exams 1 and 2 show a fresh random half of the lines at each step. The two checks in sections 1 and 2 use one **fixed** half (the other half never labelled) and give the same picture: 107% of the full-mask gain in adaptation, and a clean model in the stock villa trainer.
 - **Runs:** one training run per arm (seed 42). The differences behind the claims are large: `+0.19` GATE over default training in the stock trainer, 97% to 107% of the full-mask gain in adaptation.
 - **Schedules:** both from-scratch schedules land at 92.5% to 99.7% of full masks. Which PU variant leads on `0009B` depends on the schedule (Kiryo `0.8564` vs `0.8295` at 3k, ScribblePU `0.8701` vs `0.8586` at 5k), and ScribblePU keeps full ink brightness in both (`p99 = 187-203` vs Kiryo's `147-148`). Exam 1 models are quick benchmark runs (~10% of V3's training budget) built to compare labelling regimes.
@@ -208,7 +222,7 @@ Reader-PU applies ScribblePU directly to Reader V3, using only thin centre lines
 
 ---
 
-## 6. How it works
+## 7. How it works
 
 Standard Kiryo et al. (2017) nnPU estimates the negative risk of the unlabelled pixels:
 
@@ -233,7 +247,7 @@ loss = pi_tot * l_pos[P].mean() + frac_U * torch.clamp(R_neg, min=0.0)
 
 ---
 
-## 7. Check every number yourself
+## 8. Check every number yourself
 
 ```bash
 # 1. Loss unit tests (CPU, ~2 seconds)
@@ -275,6 +289,7 @@ scribble-pu/
     exam3_reader_pu/           # Reader-PU (B-Hand + DecOnly) training + dev evaluation
     check_koine_trainer/       # Stock koine_machines run, fixed half of the lines (labels, configs, scoring)
     check_fixed_half/          # Fixed-half adaptation vs full masks (Exam 2 code)
+    check_window_edge_cutgap/  # Small window, edge scribbles, cut gaps (frozen PREREG, configs, scripts)
   figures/                     # 7 figures
   results/                     # Raw evaluation JSONs (incl. the 3k run) + checkpoint SHA256s
   scripts/

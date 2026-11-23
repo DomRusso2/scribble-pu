@@ -1,0 +1,113 @@
+{
+ "segments": {
+  "w035": {
+   "scroll": "0139N",
+   "ink_px": 334024,
+   "kept_px": 23324,
+   "kept_edge_px": 7061,
+   "kept_centre_px": 16263,
+   "kept_frac": 0.06982731779752353
+  },
+  "w039": {
+   "scroll": "0139N",
+   "ink_px": 182426,
+   "kept_px": 9519,
+   "kept_edge_px": 3239,
+   "kept_centre_px": 6280,
+   "kept_frac": 0.0521800620525583
+  },
+  "w040": {
+   "scroll": "0139N",
+   "ink_px": 716498,
+   "kept_px": 44121,
+   "kept_edge_px": 14982,
+   "kept_centre_px": 29139,
+   "kept_frac": 0.06157867851689747
+  },
+  "w041": {
+   "scroll": "0139N",
+   "ink_px": 229883,
+   "kept_px": 11232,
+   "kept_edge_px": 3522,
+   "kept_centre_px": 7710,
+   "kept_frac": 0.048859637293753776
+  },
+  "w044": {
+   "scroll": "0139N",
+   "ink_px": 451290,
+   "kept_px": 28955,
+   "kept_edge_px": 8828,
+   "kept_centre_px": 20127,
+   "kept_frac": 0.06416051762724634
+  },
+  "pherc1667-w013": {
+   "scroll": "1667H",
+   "ink_px": 1012040,
+   "kept_px": 50106,
+   "kept_edge_px": 19496,
+   "kept_centre_px": 30610,
+   "kept_frac": 0.049509900794435
+  },
+  "pherc1667-w018": {
+   "scroll": "1667H",
+   "ink_px": 3165208,
+   "kept_px": 164452,
+   "kept_edge_px": 64465,
+   "kept_centre_px": 99987,
+   "kept_frac": 0.05195614316657863
+  },
+  "pherc1667-w023": {
+   "scroll": "1667H",
+   "ink_px": 1295831,
+   "kept_px": 68716,
+   "kept_edge_px": 27171,
+   "kept_centre_px": 41545,
+   "kept_frac": 0.05302851992273684
+  },
+  "pherc1667-w028": {
+   "scroll": "1667H",
+   "ink_px": 230538,
+   "kept_px": 9800,
+   "kept_edge_px": 4433,
+   "kept_centre_px": 5367,
+   "kept_frac": 0.04250926094613469
+  },
+  "phercparis4-w05": {
+   "scroll": "Paris4H",
+   "ink_px": 6736691,
+   "kept_px": 380131,
+   "kept_edge_px": 142398,
+   "kept_centre_px": 237733,
+   "kept_frac": 0.05642696095160072
+  },
+  "phercparis4-w07": {
+   "scroll": "Paris4H",
+   "ink_px": 5022601,
+   "kept_px": 274712,
+   "kept_edge_px": 108301,
+   "kept_centre_px": 166411,
+   "kept_frac": 0.05469516690654902
+  }
+ },
+ "per_scroll": {
+  "0139N": {
+   "ink_px": 1914121,
+   "kept_px": 117151,
+   "alpha": 16.338921562769418,
+   "kept_frac": 0.0612035498278322
+  },
+  "1667H": {
+   "ink_px": 5703617,
+   "kept_px": 293074,
+   "alpha": 19.461354470202064,
+   "kept_frac": 0.05138388499788818
+  },
+  "Paris4H": {
+   "ink_px": 11759292,
+   "kept_px": 654843,
+   "alpha": 17.957421855314937,
+   "kept_frac": 0.05568728117305021
+  }
+ },
+ "alpha_quota_weighted": 18.11677151276123
+}

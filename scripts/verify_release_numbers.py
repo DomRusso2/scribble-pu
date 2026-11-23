@@ -549,6 +549,38 @@ def check_new_checks() -> list[str]:
     return errors
 
 
+def check_window_edge_cutgap() -> list[str]:
+    """README section 5 (small window, edge scribbles, cut gaps): every quoted number matches its JSON."""
+    errors: list[str] = []
+    w = load_json("check_window_edge_cutgap.json")
+    readme = (REPO / "README.md").read_text(encoding="utf-8")
+    a, b, e = (w["small_window_and_edge"][t] for t in ("t1k1_128", "t1k2_128", "t2k1_edge"))
+    k1 = w["reference_384"]["k1"]
+    cg = w["cutgap"]
+    need = [
+        f"{a['b9_GATE']:.4f}", f"{b['b9_GATE']:.4f}", f"+{a['b9_GATE'] - b['b9_GATE']:.4f}",
+        f"{a['s814_GATE']:.4f}", f"{b['s814_GATE']:.4f}", f"+{a['s814_GATE'] - b['s814_GATE']:.4f}",
+        f"p99 = {int(b['b9_p99'])}", f"p99 = {int(a['b9_p99'])}", f"{int(k1['b9_p99'])}",
+        f"{e['b9_GATE']:.4f}", f"{k1['b9_GATE']:.4f}", f"{e['s814_GATE']:.4f}", f"{k1['s814_GATE']:.4f}",
+        f"{e['b9_M1']:.4f}", f"{k1['b9_M1']:.4f}",
+        f"{round(100 * min(cg['pu_bhand']['open_rate'], cg['pu_deconly']['open_rate']))} to "
+        f"{round(100 * max(cg['pu_bhand']['open_rate'], cg['pu_deconly']['open_rate']))}%",
+        f"{round(100 * cg['v3']['open_rate'])}%", f"{round(100 * cg['v2']['open_rate'])}%",
+        f"{cg['v3']['n_cuts']} cuts",
+    ]
+    for tok in need:
+        if tok not in readme.replace("**", ""):
+            errors.append(f"README.md missing section-5 number {tok!r}")
+    sham = [cg[t]["median_sham_fill"] for t in ("v3", "pu_bhand", "pu_deconly", "v2")]
+    ink = [cg[t]["median_ink_fill"] for t in ("v3", "pu_bhand", "pu_deconly", "v2")]
+    if f"{min(sham):.2f} to {max(sham):.2f}" not in readme or f"{min(ink):.2f} to {max(ink):.2f}" not in readme:
+        errors.append(f"README.md section-5 control ranges differ from JSON: sham {min(sham):.2f}-{max(sham):.2f}, "
+                      f"ink {min(ink):.2f}-{max(ink):.2f}")
+    if not errors:
+        print(f"  [OK] Section 5 checks match their JSON (verdicts {w['verdicts']})")
+    return errors
+
+
 def main() -> int:
     print("=" * 72)
     print("ScribblePU Release Verification Suite")
@@ -575,6 +607,7 @@ def main() -> int:
     print("\n7. Repo-wide hygiene + new checks...")
     all_errors.extend(check_repo_wide_mentions())
     all_errors.extend(check_new_checks())
+    all_errors.extend(check_window_edge_cutgap())
 
     print("\n" + "=" * 72)
     if all_errors:
