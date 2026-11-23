@@ -84,14 +84,18 @@ class BrierNNPULoss(nn.Module):
 
         Args:
             logits: (B, 1, H, W) or (B, H, W) raw logits.
-            pos_mask: Boolean tensor of same spatial shape; confirmed positive scribbles P.
-            unlabeled_mask: Boolean tensor of same spatial shape; unlabeled valid pixels U.
+            pos_mask: Boolean (or 0/1) tensor of same spatial shape; confirmed positive scribbles P.
+            unlabeled_mask: Boolean (or 0/1) tensor of same spatial shape; unlabeled valid pixels U.
             alpha: Ratio (true ink area / labeled scribble area) prior to rho scaling.
 
         Returns:
             (loss_scalar, stats_dict)
         """
         p = torch.sigmoid(logits.float())
+        if pos_mask.dtype != torch.bool:
+            pos_mask = pos_mask > 0.5  # same convention as the villa loss term
+        if unlabeled_mask.dtype != torch.bool:
+            unlabeled_mask = unlabeled_mask > 0.5
         if p.shape != pos_mask.shape:
             pos_mask = pos_mask.view_as(p)
             unlabeled_mask = unlabeled_mask.view_as(p)
