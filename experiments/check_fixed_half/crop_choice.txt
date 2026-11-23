@@ -1,0 +1,1 @@
+crop y=300 x=1900 size=2048 on v3_133208.tif (Reader V3, forward). Chosen by eye from V3's read ONLY (the top band with the most distinct bright marks); the first automatic pick (brightest area, y=4480 x=256) showed no traceable marks. Contrast stretched p2-p99.7 of the crop for visibility. No ground truth used.

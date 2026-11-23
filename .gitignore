@@ -1,0 +1,22 @@
+# Python / OS
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+Thumbs.db
+
+# Large binary artifacts (checkpoints host on Hugging Face; reads are regenerated on eval)
+*.pth
+*.tif
+*.tiff
+experiments/*/reads/
+experiments/*/ckpt/
+experiments/*/logs/
+experiments/*/visuals/
+
+# Internal submission / audit drafts (keep out of public GitHub repo)
+SUBMISSION_FORM*.txt
+DISCORD_POST.txt
+
+# helper outputs
+experiments/common/out/

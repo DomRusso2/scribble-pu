@@ -1,0 +1,69 @@
+{
+ "description": "Check H (fixed half): Exam 2 code, 600 steps from the Exam 1 5k full-mask base, 2048 crop of 0009B 133208 (y300 x1900). H2 = FIXED half of the 1-px ridge, H3 = full masks on the same crop.",
+ "base": {
+  "b125_GATE": 0.8727,
+  "b125_M4": 0.7934,
+  "b125_M1": 0.7016,
+  "b125_rAUC": 0.8706,
+  "b140_GATE": 0.6383,
+  "b140_M4": 0.5785,
+  "b140_M1": 0.5423,
+  "b140_rAUC": 0.6122,
+  "s814_GATE": 0.9493,
+  "s814_M4": 0.9419,
+  "FA80": 0.3721,
+  "thr": 81.0
+ },
+ "H2": {
+  "b125_GATE": 0.906,
+  "b125_M4": 0.8275,
+  "b125_M1": 0.7811,
+  "b125_rAUC": 0.9055,
+  "b140_GATE": 0.7,
+  "b140_M4": 0.6318,
+  "b140_M1": 0.5817,
+  "b140_rAUC": 0.6738,
+  "s814_GATE": 0.9529,
+  "s814_M4": 0.9475,
+  "FA80": 0.4472,
+  "thr": 82.0,
+  "arm": "H2",
+  "alpha": 30.222876121664143,
+  "fixedP_px": 17162,
+  "crop_ink_px": 518685,
+  "fixedP_frac_of_ink": 0.033087519400021206,
+  "n_tiles": 158,
+  "train_seconds": 535.1
+ },
+ "H3": {
+  "b125_GATE": 0.906,
+  "b125_M4": 0.8313,
+  "b125_M1": 0.763,
+  "b125_rAUC": 0.9029,
+  "b140_GATE": 0.6961,
+  "b140_M4": 0.6343,
+  "b140_M1": 0.566,
+  "b140_rAUC": 0.6735,
+  "s814_GATE": 0.9562,
+  "s814_M4": 0.9515,
+  "FA80": 0.4331,
+  "thr": 79.0,
+  "arm": "H3",
+  "alpha": 1.0,
+  "fixedP_px": 0,
+  "crop_ink_px": 518685,
+  "fixedP_frac_of_ink": 0.0,
+  "n_tiles": 158,
+  "train_seconds": 569.4
+ },
+ "gain_140325": {
+  "H2": 0.0617,
+  "H3": 0.0578,
+  "ratio": 1.0675
+ },
+ "gain_125754": {
+  "H2": 0.0333,
+  "H3": 0.0333,
+  "ratio": 1.0
+ }
+}

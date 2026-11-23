@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scribble-pu"
+version = "0.1.0"
+description = "No-Ascent Brier-nnPU loss for positive-only scribble ink detection in Herculaneum papyri (Vesuvius Challenge)."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Domenico Russo", email = "domenicor046@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.1",
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[tool.setuptools.packages.find]
+include = ["scribble_pu*"]

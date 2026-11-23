@@ -1,0 +1,53 @@
+{
+ "description": "Check K: stock koine_machines trainer (villa merge-ink-pipelines @ 47a9c37 + villa_full.patch), from scratch 3000 steps, FIXED half of the 3-px spine (no blank anchors). k1 = BrierNNPULoss, k2 = default LabelSmoothedDCAndBCE (ls .5) on the same labels.",
+ "alpha": 14.638203501961703,
+ "kept_frac_per_scroll": {
+  "0139N": 0.075151988824113,
+  "1667H": 0.06409792242361295,
+  "Paris4H": 0.06866637889423956
+ },
+ "k1": {
+  "b9_GATE": 0.7998,
+  "b9_M4": 0.7215,
+  "b9_M1": 0.6577,
+  "b9_M1n": 0.5983,
+  "b9_rAUC": 0.8124,
+  "b9_p50": 92.0,
+  "b9_p99": 207.0,
+  "s814_GATE": 0.8861,
+  "s814_M4": 0.9511,
+  "s814_M1": 0.6865,
+  "s814_M1n": 0.6781,
+  "thr": 88.0,
+  "FA80": 0.6248,
+  "cP20": 91.0,
+  "AUCcb": 0.7043,
+  "AUCpn": 0.7159,
+  "b140_GATE": 0.6017,
+  "b140_M4": 0.5738,
+  "b140_M1": 0.5327,
+  "b140_p99": 198.0
+ },
+ "k2": {
+  "b9_GATE": 0.6098,
+  "b9_M4": 0.5835,
+  "b9_M1": 0.5864,
+  "b9_M1n": 0.5455,
+  "b9_rAUC": 0.6202,
+  "b9_p50": 66.0,
+  "b9_p99": 69.0,
+  "s814_GATE": 0.6006,
+  "s814_M4": 0.6394,
+  "s814_M1": 0.5388,
+  "s814_M1n": 0.647,
+  "thr": 65.0,
+  "FA80": 0.8554,
+  "cP20": 65.0,
+  "AUCcb": 0.5949,
+  "AUCpn": 0.5652,
+  "b140_GATE": 0.529,
+  "b140_M4": 0.5135,
+  "b140_M1": 0.5188,
+  "b140_p99": 72.0
+ }
+}

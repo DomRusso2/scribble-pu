@@ -1,0 +1,17 @@
+{
+  "reader-pu-bhand.pth": {
+    "source_path": "experiments/exam3_reader_pu/ckpt/reader_pu_bhand_raw.pth",
+    "size_mb": 260.27,
+    "sha256": "9abc43e04af97b1f575efd49cdf66230755f10f3b99618a3ef598a958cb743cc"
+  },
+  "reader-pu-soup50.pth": {
+    "source_path": "experiments/exam3_reader_pu/ckpt/reader_pu_bhand_soup50.pth",
+    "size_mb": 260.27,
+    "sha256": "7a0a540ed885655722f19c5f5d0101eeff5877476c347ee7d7b8feb95ef96b3d"
+  },
+  "reader-pu-deconly-soup50.pth": {
+    "source_path": "experiments/exam3_reader_pu/ckpt/reader_pu_deconly_soup50.pth",
+    "size_mb": 260.27,
+    "sha256": "5a966b29ec5ff8eabc23315ac2bffa56525c575537f1b4dc807801ded569130b"
+  }
+}

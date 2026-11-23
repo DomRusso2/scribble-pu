@@ -1,0 +1,35 @@
+--- a/ink-detection/koine_machines/training/loss/losses.py
++++ b/ink-detection/koine_machines/training/loss/losses.py
+@@ -6,6 +6,7 @@ import torch
+ import torch.nn as nn
+ 
+ from koine_machines.training.loss.betti_matching import BettiMatchingLoss
++from koine_machines.training.loss.brier_nnpu import VillaBrierNNPULoss
+ from vesuvius.models.training.loss.nnunet_losses import LabelSmoothedDCAndBCELoss
+ 
+ 
+@@ -67,8 +68,24 @@ def _build_betti_matching_term(term_cfg: dict, _config: dict) -> nn.Module:
+         push_unmatched_to=str(term_cfg.get("push_unmatched_to", "diagonal")),
+     )
+ 
+ 
++def _build_brier_nnpu_term(term_cfg: dict, _config: dict) -> nn.Module:
++    return VillaBrierNNPULoss(
++        alpha=float(term_cfg.get("alpha", 7.0)),
++        rho=float(term_cfg.get("rho", 0.96)),
++        y_lo=float(term_cfg.get("y_lo", 0.25)),
++        y_hi=float(term_cfg.get("y_hi", 0.82)),
++        w_blank=float(term_cfg.get("w_blank", 1.0 / 6.0)),
++        min_pos_px=int(term_cfg.get("min_pos_px", 30)),
++        min_unlabeled_px=int(term_cfg.get("min_unlabeled_px", 50)),
++        pi_u_cap=float(term_cfg.get("pi_u_cap", 0.55)),
++        pi_tot_cap=float(term_cfg.get("pi_tot_cap", 0.65)),
++        batch_neg_risk=bool(term_cfg.get("batch_neg_risk", True)),
++    )
++
++
+ LOSS_TERM_BUILDERS = {
+     "LabelSmoothedDCAndBCELoss": _build_label_smoothed_dice_bce_term,
+     "BettiMatchingLoss": _build_betti_matching_term,
++    "BrierNNPULoss": _build_brier_nnpu_term,
+ }
