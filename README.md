@@ -181,6 +181,10 @@ In the scribble regime (`half_centerline`), only thin centre lines (a 3-px spine
 
 Reader-PU applies ScribblePU directly to Reader V3, using only thin centre lines (a 3-px spine) as confirmed ink (`P`) and everything off the centreline as unlabelled (`U`), with zero gap weights and zero negative masks on ink tiles. Erosion thins every stroke by the same amount; Reader-PU separates letters further than V3's best erosion on `0009B` (`+0.0226` M1) and opens the `B` and `E` counters on `w029` that erosion leaves filled (also the triangular counter on `0009B` and the arches on the `0306B` row), while keeping peak ink brightness on V3's scale (`b9_p99 = 210` vs V3's `209`, ink head bias shift `+0.0029`, zero craters).
 
+![The awarded PHerc. 0343 First Letters line: Reader V3 vs Reader V3 retuned with ScribblePU](figures/fig7_reader_pu_0343_line.png)
+
+*A second awarded line, `PHerc. 0343` (credit: Erwin Nieuwlaar). Top: Reader V3. Bottom: `reader-pu-bhand.pth`. Neither model was trained on this segment, and the ScribblePU retune used no `PHerc. 0343` data at all (Reader V3's training includes a separate opened fragment, `PHerc. 0343P`). Same surface, same inference command, same 0-255 scale: thinner strokes, letters apart, and the upper row becomes easy to follow.*
+
 **Scope:** Reader-PU is a **companion view next to V3** for crowded or fused rows, not a V3 replacement on faint scrolls: it buys letter separation with more false ink on blank papyrus (`FA80`) and lower recall on faint `0841`. The frozen-encoder 50/50 blend removes most of that cost.
 
 | Model (same V3 architecture) | `0009B M1` (fixed / best) | `0009B M1n` | `0009B GATE / M4` | `w029 M1 / M1n` | `w029 GATE / M4` | `0306B` crater `p0.1` (`<30 px`) | `0841 ag1` `GATE / M2` | `FA80` |
@@ -258,7 +262,8 @@ python scripts/verify_release_numbers.py
 #    optional extras: VILLA_DIR=<villa checkout on merge-ink-pipelines> adds the patch + CompositeLoss checks,
 #    SCRIBBLEPU_CKPT_DIR=<folder with the downloaded checkpoints> checks the files' SHA256
 
-# 3. Regenerate all 7 figures (needs the local model reads and scroll labels; the finished PNGs are already in figures/)
+# 3. Regenerate figures 0-6 (needs the local model reads and scroll labels; the finished PNGs are already in figures/);
+#    figure 7: experiments/reader_pu_0343_line/ (read_0343_line.py, then make_fig7.py)
 python scripts/make_release_figures.py
 ```
 
@@ -290,7 +295,8 @@ scribble-pu/
     check_koine_trainer/       # Stock koine_machines run, fixed half of the lines (labels, configs, scoring)
     check_fixed_half/          # Fixed-half adaptation vs full masks (Exam 2 code)
     check_window_edge_cutgap/  # Small window, edge scribbles, cut gaps (frozen PREREG, configs, scripts)
-  figures/                     # 7 figures
+    reader_pu_0343_line/       # Reader V3 vs Reader-PU on the awarded PHerc. 0343 line (read + figure 7)
+  figures/                     # 8 figures
   results/                     # Raw evaluation JSONs (incl. the 3k run) + checkpoint SHA256s
   scripts/
     make_release_figures.py

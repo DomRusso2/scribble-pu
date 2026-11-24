@@ -7,7 +7,7 @@ Checks:
    attribution / mislabeling strings in all public files.
 3. Local post drafts only (skipped when absent): the Discord body is <= 1,990 characters
    and the submission text is a single unbroken paragraph.
-4. All 7 figures (fig0..fig6) exist and are landscape.
+4. All 8 figures (fig0..fig7) exist and are landscape.
 5. The 3 Reader-PU checkpoints match results/checkpoints_sha256.json and README.md
    (download them from Hugging Face and set SCRIBBLEPU_CKPT_DIR to check the files).
 6. villa_pr/villa_full.patch and villa_pr/losses_patch.diff apply cleanly to villa
@@ -385,6 +385,7 @@ def check_figures() -> list[str]:
         "fig4_exam2_adaptation_and_alpha.png",
         "fig5_adaptation_0009b.png",
         "fig6_koine_trainer_check.png",
+        "fig7_reader_pu_0343_line.png",
     ]
     for fn in expected:
         p = FIGURES / fn
