@@ -11,6 +11,10 @@ Checkpoints: [huggingface.co/domenicor046/scribble-pu](https://huggingface.co/do
 
 *The awarded `PHerc. 0306B` First Letters row (credit: Warner & Bodill). Top: Reader V3. Bottom: the same Reader V3 network retuned with ScribblePU in 15 minutes, using only thin centre lines on other scrolls' letters as ink labels (`reader-pu-bhand.pth`). It never saw this row. Same scan, same inference command, same 0-255 scale: fused strokes thin out and the gaps between letters open. Reader-PU is a companion view for crowded rows, not a V3 replacement (trade-offs in section 4).*
 
+![The awarded PHerc. 0343 First Letters line: Reader V3 vs Reader V3 retuned with ScribblePU](figures/fig7_reader_pu_0343_line.png)
+
+*A second awarded line, `PHerc. 0343` (credit: Erwin Nieuwlaar): Reader V3 on top, Reader-PU below. Neither model was trained on this segment.*
+
 ---
 
 ## What ScribblePU is, and why this was not possible before
@@ -181,10 +185,6 @@ In the scribble regime (`half_centerline`), only thin centre lines (a 3-px spine
 
 Reader-PU applies ScribblePU directly to Reader V3, using only thin centre lines (a 3-px spine) as confirmed ink (`P`) and everything off the centreline as unlabelled (`U`), with zero gap weights and zero negative masks on ink tiles. Erosion thins every stroke by the same amount; Reader-PU separates letters further than V3's best erosion on `0009B` (`+0.0226` M1) and opens the `B` and `E` counters on `w029` that erosion leaves filled (also the triangular counter on `0009B` and the arches on the `0306B` row), while keeping peak ink brightness on V3's scale (`b9_p99 = 210` vs V3's `209`, ink head bias shift `+0.0029`, zero craters).
 
-![The awarded PHerc. 0343 First Letters line: Reader V3 vs Reader V3 retuned with ScribblePU](figures/fig7_reader_pu_0343_line.png)
-
-*A second awarded line, `PHerc. 0343` (credit: Erwin Nieuwlaar). Top: Reader V3. Bottom: `reader-pu-bhand.pth`. Neither model was trained on this segment, and the ScribblePU retune used no `PHerc. 0343` data at all (Reader V3's training includes a separate opened fragment, `PHerc. 0343P`). Same surface, same inference command, same 0-255 scale: thinner strokes, letters apart, and the upper row becomes easy to follow.*
-
 **Scope:** Reader-PU is a **companion view next to V3** for crowded or fused rows, not a V3 replacement on faint scrolls: it buys letter separation with more false ink on blank papyrus (`FA80`) and lower recall on faint `0841`. The frozen-encoder 50/50 blend removes most of that cost.
 
 | Model (same V3 architecture) | `0009B M1` (fixed / best) | `0009B M1n` | `0009B GATE / M4` | `w029 M1 / M1n` | `w029 GATE / M4` | `0306B` crater `p0.1` (`<30 px`) | `0841 ag1` `GATE / M2` | `FA80` |
@@ -223,6 +223,7 @@ A gap counts as open when the model's read at its centre falls to 30% or less of
 - **Schedules:** both from-scratch schedules land at 92.5% to 99.7% of full masks. Which PU variant leads on `0009B` depends on the schedule (Kiryo `0.8564` vs `0.8295` at 3k, ScribblePU `0.8701` vs `0.8586` at 5k), and ScribblePU keeps full ink brightness in both (`p99 = 187-203` vs Kiryo's `147-148`). Exam 1 models are quick benchmark runs (~10% of V3's training budget) built to compare labelling regimes.
 - **Fragment:** `0009B` is an opened fragment scanned at 116 keV / 8.64 µm; Exam 2 tests on two other segments of it (`140325`, `125754`).
 - **Blank papyrus:** the exams also used an optional label channel for verified blank papyrus; the stock-trainer check shows it is not required.
+- **The `PHerc. 0343` line (figure 7):** the ScribblePU retune used no `PHerc. 0343` data at all, and Reader V3 never saw this rolled scroll (its training includes a separate opened fragment, `PHerc. 0343P`). Same surface, inference command and 0-255 scale for both models; read and figure scripts in `experiments/reader_pu_0343_line/`.
 
 ---
 
