@@ -9,7 +9,7 @@ Checkpoints: [huggingface.co/domenicor046/scribble-pu](https://huggingface.co/do
 
 ![The awarded PHerc0306B First Letters row (Warner & Bodill): Reader V3 vs Reader V3 retuned with ScribblePU](figures/fig1_hero_first_letters_0306B.png)
 
-*The awarded `PHerc. 0306B` First Letters row (credit: Warner & Bodill). Top: Reader V3. Bottom: the same Reader V3 network retuned with ScribblePU in 15 minutes, using only thin centre lines on other scrolls' letters as ink labels (`reader-pu-bhand.pth`). It never saw this row. Same scan, same inference command, same 0-255 scale: fused strokes thin out and the gaps between letters open. Reader-PU is a companion view for crowded rows, not a V3 replacement (trade-offs in section 4).*
+*The awarded `PHerc. 0306B` First Letters row (credit: Warner & Bodill): Reader V3 on top, below the same network retuned with ScribblePU in 15 minutes from thin lines on other scrolls' letters. It never saw this row.*
 
 ![The awarded PHerc. 0343 First Letters line: Reader V3 vs Reader V3 retuned with ScribblePU](figures/fig7_reader_pu_0343_line.png)
 
